@@ -15,7 +15,7 @@ from AppCoder.models import Curso
 def inicio(request):
     return HttpResponse('vista inicio')
 
-def curso(request):
+def cursos(request):
     return HttpResponse('vista curso')
 
 def profesores(request):
@@ -26,5 +26,5 @@ def estudiantes(request):
 
 def entregables(request):
     return HttpResponse('vista entregable')
-    
+
 
