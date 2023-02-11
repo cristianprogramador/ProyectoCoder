@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from AppCoder.models import Curso
+#from AppCoder.models import Curso
 
 
 # Create your views here.
@@ -13,18 +13,24 @@ from AppCoder.models import Curso
     #return HttpResponse(documentoDeTexto)
 
 def inicio(request):
-    return HttpResponse('vista inicio')
+    #return HttpResponse('vista inicio')
+    return render(request, 'AppCoder/inicio.html')
 
 def cursos(request):
-    return HttpResponse('vista curso')
+    #return HttpResponse('vista curso')
+    return render(request, 'AppCoder/cursos.html')
+
 
 def profesores(request):
-    return HttpResponse('vista profesores')
+    #return HttpResponse('vista profesores')
+    return render(request, 'AppCoder/profesores.html')
 
 def estudiantes(request):
-    return HttpResponse('vista estudiantes')
+    #return HttpResponse('vista estudiantes')
+    return render(request, 'AppCoder/estudiantes.html')
 
 def entregables(request):
-    return HttpResponse('vista entregable')
+    #return HttpResponse('vista entregable')
+    return render(request, 'AppCoder/entregables.html')
 
 
