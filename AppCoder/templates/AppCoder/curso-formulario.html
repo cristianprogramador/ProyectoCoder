@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario - Agregar Curso</title>
+</head>
+<body>
+    {% if formulario_curso.error %}
+    <p style="color: red;">Los datos estan mal. Por favor reviselos.</p>
+    {% endif %}
+    <form action="{% url 'curso-formulario' %}" method="POST">
+        {% csrf_token %}
+        <p>Curso: <input type="text" name="curso"></p>
+
+        <p>Camada: <input type="number" name="camada"></p>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+</body>
+</html>

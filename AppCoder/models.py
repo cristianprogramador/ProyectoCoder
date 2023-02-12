@@ -21,6 +21,13 @@ class Profesor(models.Model):
     email = models.EmailField()
     profesion = models.CharField(max_length=30)
 
+    class Meta:
+        verbose_name_plural = 'Profesores'
+
+    def __str__(self) -> str:
+        return f'{self.nombre} {self.apellido}'
+        
+
 class Entregable(models.Model):
 
     nombre = models.CharField(max_length=30)
