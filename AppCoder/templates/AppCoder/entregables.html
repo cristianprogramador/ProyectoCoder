@@ -4,15 +4,21 @@
 <!--FORMULARIO-->
 <section class="formulario_nuevo">
     <h2>Formulario - Agregar Entregable</h2>
-    <form action="" method="">
+
+    {% if formulario_curso.error %}
+        <p style="color: red;">Los datos estan mal. Por favor reviselos.</p>
+    {% endif %}
+
+    <form action="{% url 'entregables' %}" method="POST">
+        {% csrf_token %}
         <legend>
             <label for="">Nombre:</label>
-            <input type="text">
+            <input type="text" name="nombre">
             <label for="">Fecha de entrega:</label>
-            <input type="text">
+            <input type="date" name="fechadeentrega">
             <label for="">Entregado:</label>
-            <input type="checkbox" class="check">
-            <input type="submit" value="Buscar">
+            <input type="checkbox" class="check" name="entregado">
+            <input type="submit" value="Enviar">
         </legend>
             
     </form>  

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from AppCoder.models import Curso, Profesor
+from AppCoder.models import Curso, Profesor, Estudiante, Entregable
 from AppCoder.forms import CursoFormulario, ProfesorFormulario, EstudianteFormulario, EntregableFormulario
 
 
@@ -51,12 +51,36 @@ def profesores(request):
     #return render(request, 'AppCoder/profesores.html')
 
 def estudiantes(request):
+    if request.method == 'POST':
+
+        mi_formulario = EstudianteFormulario(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            estudiante = Estudiante(nombre=informacion['nombre'], apellido=informacion['apellido'], email=informacion['email'])
+            estudiante.save()
+            return redirect('inicio')
+    else:
+        mi_formulario = EstudianteFormulario()
+    return render(request, 'AppCoder/estudiantes.html', {'estudiante': mi_formulario})
     #return HttpResponse('vista estudiantes')
-    return render(request, 'AppCoder/estudiantes.html')
+    #return render(request, 'AppCoder/estudiantes.html')
 
 def entregables(request):
+    if request.method == 'POST':
+
+        mi_formulario = EntregableFormulario(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            entregable = Entregable(nombre=informacion['nombre'], fecha_de_entrega=informacion['fechadeentrega'], entregado=informacion['entregado'])
+            entregable.save()
+            return redirect('inicio')
+    else:
+        mi_formulario = EntregableFormulario()
+    return render(request, 'AppCoder/entregables.html', {'entregables': mi_formulario})
     #return HttpResponse('vista entregable')
-    return render(request, 'AppCoder/entregables.html')
+    #return render(request, 'AppCoder/entregables.html')
 
 def curso_formulario(request):
     if request.method == 'POST':

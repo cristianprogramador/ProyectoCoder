@@ -8,15 +8,21 @@ ESTUDIANTES
 <!--FORMULARIO-->
 <section class="formulario_nuevo">
     <h2>Formulario - Agregar Estudiante</h2>
-    <form action="" method="">
+
+            {% if formulario_curso.error %}
+                <p style="color: red;">Los datos estan mal. Por favor reviselos.</p>
+            {% endif %}
+            
+    <form action="{% url 'estudiantes' %}" method="POST">
+        {% csrf_token %}
         <legend>
             <label for="">Nombre:</label>
-            <input type="text">
+            <input type="text" name="nombre">
             <label for="">Apellido:</label>
-            <input type="text">
+            <input type="text" name="apellido">
             <label for="">Email:</label>
-            <input type="email">
-            <input type="submit" value="Enviar">
+            <input type="email" name="email">
+            <input type="submit" value="Agregar">
         </legend>
             
     </form>  
