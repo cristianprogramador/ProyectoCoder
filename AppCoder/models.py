@@ -3,8 +3,11 @@ from django.db import models
 # Create your models here.
 class Curso(models.Model):
 
-    nombres = models.CharField(max_length=40)
+    nombre = models.CharField(max_length=40)
     camada = models.IntegerField()
+
+    def __str__(self) -> str:
+        return f'{self.nombre}: {str(self.camada)}'
 
 class Estudiante(models.Model):
 
