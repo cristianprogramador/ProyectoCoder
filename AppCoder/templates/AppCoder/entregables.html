@@ -3,19 +3,36 @@
 {% block contenido %}
 <!--FORMULARIO-->
 <section class="formulario_nuevo">
-            <h2>Formulario - Agregar Entregables</h2>
-            <form action="" method="">
-                <legend>
-                    <label for="">Nombre</label>
-                    <input type="text">
-                    <label for="">Apellido</label>
-                    <input type="text">
-                    <label for="">Email</label>
-                    <input type="email">
-                    <label for="">Profesion</label>
-                    <input type="text">
-                </legend>
-                <input type="submit" value="Buscar">
-            </form>  
+    <h2>Formulario - Agregar Entregable</h2>
+    <form action="" method="">
+        <legend>
+            <label for="">Nombre:</label>
+            <input type="text">
+            <label for="">Fecha de entrega:</label>
+            <input type="text">
+            <label for="">Entregado:</label>
+            <input type="checkbox" class="check">
+            <input type="submit" value="Buscar">
+        </legend>
+            
+    </form>  
 </section>
+
+<style>
+.formulario_nuevo form label{
+font-size: 20px;
+}
+.formulario_nuevo input{
+font-size: 17px;
+}
+.formulario_nuevo .check{
+    margin-left: 8px;
+    margin-right: 10px;
+    transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+     padding: 10px;
+}
+</style>
 {% endblock %}

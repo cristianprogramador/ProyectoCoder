@@ -1,21 +1,36 @@
 {% extends "AppCoder/padre.html" %}
 
+{% block titulo %}
+PROFESORES
+{% endblock %}
+
 {% block contenido %}
 <!--FORMULARIO-->
 <section class="formulario_nuevo">
             <h2>Formulario - Agregar Profesor</h2>
             <form action="" method="">
                 <legend>
-                    <label for="">Nombre</label>
+                    <label for="">Nombre:</label>
                     <input type="text">
-                    <label for="">Apellido</label>
+                    <label for="">Apellido:</label>
                     <input type="text">
-                    <label for="">Email</label>
+                    <label for="">Email:</label>
                     <input type="email">
-                    <label for="">Profesion</label>
+                    <label for="">Profesion:</label>
                     <input type="text">
+                    <input type="submit" value="Buscar">
                 </legend>
-                <input type="submit" value="Buscar">
+                    
             </form>  
 </section>
+
+<style>
+    .formulario_nuevo form label{
+        font-size: 20px;
+    }
+    .formulario_nuevo input{
+        font-size: 17px;
+    }
+</style>
+
 {% endblock %}

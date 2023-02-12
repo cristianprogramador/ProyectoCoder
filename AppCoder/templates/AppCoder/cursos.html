@@ -3,10 +3,21 @@
 {% block contenido %}   
 <!--FORMULARIO-->
 <section class="formulario_nuevo">
-    <h2>Buscador de cursos</h2>
-    <form action="">
+    <h2>Formulario - Agregar Curso</h2>
+    <form action="" style="display: block;">
+        <label for="">Curso:</label>
+        <input type="text">
+        <label for="">Camada:</label>
         <input type="text">
         <input type="submit" value="Buscar">
     </form>  
 </section>
+
+<style>
+    .formulario_nuevo form label{
+        font-size: 20px;
+    }
+</style>
+
 {% endblock %}
+
