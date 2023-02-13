@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from AppCoder.models import Curso, Profesor, Estudiante, Entregable
-from AppCoder.forms import CursoFormulario, ProfesorFormulario, EstudianteFormulario, EntregableFormulario
+from AppCoder.models import Curso, Profesor, Estudiante
+from AppCoder.forms import CursoFormulario, ProfesorFormulario, EstudianteFormulario
 
 
 # Create your views here.
