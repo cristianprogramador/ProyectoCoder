@@ -4,7 +4,6 @@ from .models import *
 # Register your models here.
 admin.site.register(Curso)
 admin.site.register(Estudiante)
-admin.site.register(Entregable)
 admin.site.register(Profesor)
 
 # Mi super user cristian | bambino11
