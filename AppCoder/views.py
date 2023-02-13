@@ -21,7 +21,7 @@ def buscar(request):
     else: 
         respuesta = 'ERROR CAMPO SIN RELLENO'
 
-    return HttpResponse(respuesta)
+    return render(request, 'AppCoder/inicio.html', {"respuesta": respuesta})
 
 def cursos(request):
     if request.method == 'POST':
