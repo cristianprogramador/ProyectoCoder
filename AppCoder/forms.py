@@ -23,5 +23,5 @@ class EstudianteFormulario(forms.Form):
 class EntregableFormulario(forms.Form):
 
     nombre = forms.CharField(max_length=30)
-    fecha_de_entrega = forms.DateField()
+    fechaDeEntrega = forms.DateField()
     entregado = forms.BooleanField()

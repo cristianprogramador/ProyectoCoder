@@ -21,7 +21,7 @@ def buscar(request):
     else: 
         respuesta = 'ERROR CAMPO SIN RELLENO'
 
-    return HttpResponse(respuesta)
+    return render(request, 'AppCoder/inicio.html', {"respuesta": respuesta})
 
 def cursos(request):
     if request.method == 'POST':
@@ -78,11 +78,9 @@ def entregables(request):
 
         if mi_formulario.is_valid():
             informacion = mi_formulario.cleaned_data
-            entregable = Entregable(nombre=informacion['nombre'], fecha_de_entrega=informacion['fechadeentrega'], entregado=informacion['entregado'])
+            entregable = Entregable(nombre=informacion['nombre'], fechaDeEntrega=informacion['fechadeentrega'], entregado=informacion['entregado'])
             entregable.save()
             return redirect('inicio')
     else:
         mi_formulario = EntregableFormulario()
     return render(request, 'AppCoder/entregables.html', {'entregables': mi_formulario})
-    #return HttpResponse('vista entregable')
-    #return render(request, 'AppCoder/entregables.html')
