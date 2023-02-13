@@ -9,7 +9,7 @@ ESTUDIANTES
 <section class="formulario_nuevo">
     <h2>Formulario - Agregar Estudiante</h2>
 
-            {% if formulario_curso.error %}
+            {% if formulario_curso.errors %}
                 <p style="color: red;">Los datos estan mal. Por favor reviselos.</p>
             {% endif %}
             
@@ -28,6 +28,7 @@ ESTUDIANTES
     </form>  
 </section>
 
+<!--ESTILOS PEQUEÑOS DETALLES-->
 <style>
 .formulario_nuevo form label{
     font-size: 20px;

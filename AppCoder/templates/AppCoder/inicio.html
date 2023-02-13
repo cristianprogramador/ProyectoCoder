@@ -8,9 +8,22 @@ INICIO
 <!--FORMULARIO-->
 <section class="formulario_nuevo">
     <h2>Buscador de camada</h2>
-    <form action="">
-        <input type="text">
+    <form action="{% url 'buscar' %}" method="GET">
+        {% csrf_token %}
+        <input type="number" name="camada" id="camada">
         <input type="submit" value="Buscar">
     </form>  
 </section>
+
+<p>Estamos buscando la camada {{ camada }}</p>
+{% if cursos %}
+<ul>
+    {% for curso in cursos %}
+    <li style="font-size: 30px;">{{ curso.camada }}: {{ curso.nombre }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p style="color: red; font-size: 30px;">No hay datos con esa descripción</p>
+{% endif %}
+
 {% endblock %}

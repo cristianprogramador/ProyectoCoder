@@ -7,5 +7,5 @@ admin.site.register(Estudiante)
 admin.site.register(Entregable)
 admin.site.register(Profesor)
 
-#Mi super user cristian | bambino11
+# Mi super user cristian | bambino11
 

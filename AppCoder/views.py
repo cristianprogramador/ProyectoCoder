@@ -6,33 +6,38 @@ from AppCoder.forms import CursoFormulario, ProfesorFormulario, EstudianteFormul
 
 # Create your views here.
 
-#def curso(self):
-
-    #curso = Curso(nombres='Backend', camada='12345')
-    #curso.save()
-    #documentoDeTexto = f'--->Curso: {curso.nombres} camada: {curso.camada}'
-    #return HttpResponse(documentoDeTexto)
+# VISTAS DE PAGINAS NAVEGACION
 
 def inicio(request):
-    #return HttpResponse('vista inicio')
+
     return render(request, 'AppCoder/inicio.html')
+
+def buscar(request):
+    if request.GET['camada']:
+        camada = request.GET['camada']
+        cursos = Curso.objects.filter(camada__icontains = camada)
+        return render(request, 'AppCoder/inicio.html', {'cursos': cursos, 'camada': camada})
+
+    else: 
+        respuesta = 'ERROR CAMPO SIN RELLENO'
+
+    return HttpResponse(respuesta)
 
 def cursos(request):
     if request.method == 'POST':
-
+        # Aqui recibiremos toda las informacion enviada mediante el formulario
         mi_formulario = CursoFormulario(request.POST)
-
+        # Validaremos que los datos correspondan con los esperados
         if mi_formulario.is_valid():
             informacion = mi_formulario.cleaned_data
             curso = Curso(nombre=informacion['curso'], camada=informacion['camada'])
             curso.save()
             return redirect('inicio')
     else:
+        # inicializamos un formulario vacio para construir el HTML
         mi_formulario = CursoFormulario()
+    # Mostramos la vista del formulario pero pensando el formulario vacio como contexto
     return render(request, 'AppCoder/cursos.html', {'cursos': mi_formulario})
-    #return HttpResponse('vista curso')
-    #return render(request, 'AppCoder/cursos.html')
-
 
 def profesores(request):
     if request.method == 'POST':
@@ -81,17 +86,3 @@ def entregables(request):
     return render(request, 'AppCoder/entregables.html', {'entregables': mi_formulario})
     #return HttpResponse('vista entregable')
     #return render(request, 'AppCoder/entregables.html')
-
-def curso_formulario(request):
-    if request.method == 'POST':
-
-        mi_formulario = CursoFormulario(request.POST)
-
-        if mi_formulario.is_valid():
-            informacion = mi_formulario.cleaned_data
-            curso = Curso(nombre=informacion['curso'], camada=informacion['camada'])
-            curso.save()
-            return redirect('inicio')
-    else:
-        mi_formulario = CursoFormulario()
-    return render(request, 'AppCoder/curso-formulario.html', {'formulario_curso': mi_formulario})
