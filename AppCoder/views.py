@@ -24,6 +24,8 @@ def buscar(request):
     return render(request, 'AppCoder/inicio.html', {"respuesta": respuesta})
 
 def cursos(request):
+    mis_cursos = Curso.objects.all()
+
     if request.method == 'POST':
         # Aqui recibiremos toda las informacion enviada mediante el formulario
         mi_formulario = CursoFormulario(request.POST)
@@ -32,12 +34,13 @@ def cursos(request):
             informacion = mi_formulario.cleaned_data
             curso = Curso(nombre=informacion['curso'], camada=informacion['camada'])
             curso.save()
-            return redirect('inicio')
+            nuevo_curso = {'nombre': informacion['curso'], 'camada': informacion['camada']}
+            return render(request, 'AppCoder/cursos.html', {'cursos': mi_formulario, 'nuevo_curso': nuevo_curso, 'mis_cursos': mis_cursos})
     else:
         # inicializamos un formulario vacio para construir el HTML
         mi_formulario = CursoFormulario()
     # Mostramos la vista del formulario pero pensando el formulario vacio como contexto
-    return render(request, 'AppCoder/cursos.html', {'cursos': mi_formulario})
+    return render(request, 'AppCoder/cursos.html', {'cursos': mi_formulario, 'mis_cursos': mis_cursos})
 
 def profesores(request):
     if request.method == 'POST':

@@ -9,6 +9,17 @@
     <p style="color: red;">Los datos estan mal. Por favor reviselos.</p>
     {% endif %}
     
+    <h4>Cursos activos</h4>
+    {% for curso in mis_cursos%}
+    {{ curso.camada }}: {{ curso.nombre }} <br>
+    {% endfor %}
+    <hr>
+
+    {% if nuevo_curso %}
+    <p>Se agregó satisfactoriamente la camada {{ nuevo_curso.camada }} ({{ nuevo_curso.nombre }})</p>
+    <hr>
+    {% endif %}
+
     <form action="{% url 'cursos' %}" method="POST">
         {% csrf_token %}
         <label for="">Curso:</label>
